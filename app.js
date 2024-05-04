@@ -1,6 +1,6 @@
 //dependencies
 const http = require("http");
-
+const {reqResHandler} =require('./helpers/reqResHandler')
 //module wrapper
 const app = {};
 
@@ -12,12 +12,12 @@ app.config = {
 //creating server
 
 app.createServer = () => {
-  const server = http.createServer((req, res) => {
-    res.end("hello world");
-  });
+  const server = http.createServer(reqResHandler);
   server.listen(app.config.port, () => {
     console.log(`server is running on port ${app.config.port}`);
   });
 };
 
+
+//call server
 app.createServer();
